@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Criptografia Didática</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <header class="hero">
+        <p class="eyebrow">Segurança e ensino</p>
+        <h1>Criptografia Didática</h1>
+        <p class="subtitle">
+          Insira uma senha, código ou mensagem e veja como ela pode ser transformada
+          em algo diferente e depois recuperada novamente.
+        </p>
+      </header>
+
+      <main class="grid">
+        <section class="panel">
+          <label for="textInput">Senha / código</label>
+          <textarea id="textInput" rows="6" placeholder="Digite letras, números ou símbolos..."></textarea>
+
+          <div class="field-row">
+            <div class="field-group">
+              <label for="keyInput">Chave da cifra</label>
+              <input id="keyInput" type="number" min="1" max="94" value="7" />
+            </div>
+          </div>
+
+          <div class="actions">
+            <button id="encryptBtn" class="primary">Criptografar</button>
+            <button id="decryptBtn" class="secondary">Descriptografar</button>
+            <button id="demoBtn" class="ghost">Ver exemplo</button>
+          </div>
+
+          <div class="result-box">
+            <h2>Resultado</h2>
+            <pre id="resultOutput">A mensagem aparecerá aqui.</pre>
+          </div>
+        </section>
+
+        <aside class="panel explanation">
+          <h2>Como o processo funciona</h2>
+
+          <ol class="steps">
+            <li>Escolhemos um conjunto de caracteres visíveis: letras, números e símbolos.</li>
+            <li>Cada caractere recebe uma posição dentro dessa tabela.</li>
+            <li>A cifra desloca essa posição pela chave informada.</li>
+            <li>Na descriptografia, o deslocamento é invertido para voltar ao valor original.</li>
+          </ol>
+
+          <div class="formula-box">
+            <p><strong>Criptografar:</strong> novo índice = (índice + chave) % 95</p>
+            <p><strong>Descriptografar:</strong> índice original = (índice - chave + 95) % 95</p>
+          </div>
+
+          <div class="example-box">
+            <h3>Exemplo rápido</h3>
+            <p><span class="highlight">A</span> → índice 10 → +7 → índice 17 → <span class="highlight">H</span></p>
+            <p>Ao descriptografar, <span class="highlight">H</span> volta para <span class="highlight">A</span> usando a operação inversa.</p>
+          </div>
+
+          <div class="trace-box">
+            <h3>Detalhamento passo a passo</h3>
+            <ul id="traceList" class="trace-list">
+              <li>Digite uma senha e clique em Criptografar.</li>
+            </ul>
+          </div>
+        </aside>
+      </main>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
